@@ -1,20 +1,19 @@
 //
-//  EditBookViewModel.swift
+//  CreateBookViewModel.swift
 //  BookManagementSystem
 //
 //  Created by Junjie Huang on 2024/4/20.
 //
 
 import Foundation
-
 @MainActor
-class EditBookViewModel: ObservableObject {
+class CreateBookViewModel: ObservableObject {
     @Published var book: Book
-    var updatedSuccess: Bool = false
+    var saveSuccess: Bool = false
     private let service: BookService
     
     init(
-        book: Book,
+        book: Book = .init(id: UUID().uuidString, title: "", author: "", publicationYear: "", isbn: ""),
         service: BookService = DefaultBookService()
     ) {
         self.book = book
@@ -23,10 +22,10 @@ class EditBookViewModel: ObservableObject {
     
     func saveBook() async {
         do {
-            updatedSuccess = try await service.updateBook(book: book)
+            saveSuccess = try await service.createBook(book: book)
         } catch let error {
             print(error.localizedDescription)
-            updatedSuccess = false
+            saveSuccess = false
         }
     }
 }

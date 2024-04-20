@@ -42,10 +42,9 @@ struct BookListView: View {
     }
     
     private var addButton: some View {
-        Button(action: {
-            // Add button action
-            // Perform the desired action here
-        }) {
+        NavigationLink {
+            CreateBookView(viewModel: CreateBookViewModel())
+        } label: {
             Image(systemName: "plus.circle.fill")
                 .font(.title)
                 .foregroundColor(.blue)

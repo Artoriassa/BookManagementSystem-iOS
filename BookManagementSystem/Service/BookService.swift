@@ -8,12 +8,23 @@
 import Foundation
 protocol BookService {
     func fetchAllBooks() async throws -> [Book]
+    func createBook(book: Book) async throws -> Bool
+    func updateBook(book: Book) async throws -> Bool
     func deleteBookBy(id: String) async throws -> Bool
-    func saveBook(book: Book) async throws -> Bool
 }
 
 class DefaultBookService: BookService {
-    func saveBook(book: Book) async throws -> Bool {
+    
+    func fetchAllBooks() async throws -> [Book] {
+        return mockBooks
+    }
+    
+    func createBook(book: Book) async throws -> Bool {
+        mockBooks.insert(book, at: 0)
+        return true
+    }
+    
+    func updateBook(book: Book) async throws -> Bool {
         let targetIndex = mockBooks.firstIndex { $0.id == book.id }
         mockBooks[targetIndex!].title = book.title
         mockBooks[targetIndex!].author = book.author
@@ -22,10 +33,6 @@ class DefaultBookService: BookService {
         return true
     }
     
-    
-    func fetchAllBooks() async throws -> [Book] {
-        return mockBooks
-    }
     
     func deleteBookBy(id: String) async throws -> Bool {
         mockBooks.removeAll{ $0.id == id }
