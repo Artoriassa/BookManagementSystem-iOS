@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BookListRow: View {
-    //    @State private var book: Book
     @ObservedObject
     var viewModel: BookListRowViewModel
     let ondelete: () async -> Void
@@ -30,10 +29,9 @@ struct BookListRow: View {
                         .font(.title)
                         .foregroundColor(.blue)
                 }
-                Button(action: {
-                    // Add button action
-                    // Perform the desired action here
-                }) {
+                NavigationLink {
+                    EditBookView(viewModel: EditBookViewModel(book: viewModel.book))
+                } label: {
                     Image(systemName: "pencil.circle.fill")
                         .font(.title)
                         .foregroundColor(.blue)

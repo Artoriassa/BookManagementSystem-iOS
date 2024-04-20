@@ -11,13 +11,15 @@ struct MainView: View {
     @State private var searchText = ""
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                searchBar
-                addButton
-            }
-            .padding(.horizontal)
-            BookListView()
+        NavigationView {
+            VStack(alignment: .leading) {
+                HStack {
+                    searchBar
+                    addButton
+                }
+                .padding(.horizontal)
+                BookListView()
+            }            
         }
     }
     
