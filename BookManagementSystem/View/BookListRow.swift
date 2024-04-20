@@ -11,6 +11,7 @@ struct BookListRow: View {
     //    @State private var book: Book
     @ObservedObject
     var viewModel: BookListRowViewModel
+    let ondelete: () async -> Void
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -39,8 +40,10 @@ struct BookListRow: View {
                 }
                 .padding(.leading, 4)
                 Button(action: {
-                    // Add button action
-                    // Perform the desired action here
+                    Task {
+                        await viewModel.deleteThisBook()
+                        await ondelete()
+                    }
                 }) {
                     Image(systemName: "trash.slash.fill")
                         .font(.title)
@@ -53,8 +56,4 @@ struct BookListRow: View {
         .background(Color.gray.opacity(0.2))
         .cornerRadius(8)
     }
-}
-
-#Preview {
-    BookListRow(viewModel: BookListRowViewModel(book: Book(title: "Book 1", author: "Author 1", publicationYear: 2020, isbn: "1234567890")))
 }

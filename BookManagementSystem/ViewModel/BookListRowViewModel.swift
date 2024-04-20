@@ -7,8 +7,10 @@
 
 import Foundation
 
+@MainActor
 class BookListRowViewModel: ObservableObject {
     @Published var book: Book
+    @Published var deleted: Bool = false
     let service: BookService
     
     init(
@@ -19,5 +21,13 @@ class BookListRowViewModel: ObservableObject {
         self.service = service
     }
     
+    func deleteThisBook() async {
+        do {
+            deleted = try await service.deleteBookBy(id: book.id)
+        } catch let error {
+            print(error.localizedDescription)
+            deleted = false
+        }
+    }
     
 }

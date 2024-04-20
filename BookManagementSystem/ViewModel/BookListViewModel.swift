@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class BookListModel: ObservableObject {
     @Published var books: [Book]
     let service: BookService
@@ -21,6 +22,11 @@ class BookListModel: ObservableObject {
     }
     
     func fetchAllBooks() async {
-        books = await service.fetchAllBooks()
+        do {
+            books = try await service.fetchAllBooks()
+            print("fetched all books📚📚📚📚📚")
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 }

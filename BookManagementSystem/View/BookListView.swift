@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BookListView: View {
-    @State private var selectedBook: Book?
     @ObservedObject
     var viewModel = BookListModel(books: [])
     
@@ -16,7 +15,11 @@ struct BookListView: View {
         ScrollView {
             VStack(spacing: 8) {
                 ForEach(viewModel.books) { book in
-                    BookListRow(viewModel: BookListRowViewModel(book: book))
+                    BookListRow(
+                        viewModel: BookListRowViewModel(book: book),
+                        ondelete: {
+                            await viewModel.fetchAllBooks()
+                        })
                 }
             }
             .padding(.horizontal, 16)
