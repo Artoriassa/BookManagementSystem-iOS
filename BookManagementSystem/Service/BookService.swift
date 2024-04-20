@@ -11,6 +11,7 @@ protocol BookService {
     func createBook(book: Book) async throws -> Bool
     func updateBook(book: Book) async throws -> Bool
     func deleteBookBy(id: String) async throws -> Bool
+    func searchBooksBy(isbn: String) async throws -> [Book]
 }
 
 class DefaultBookService: BookService {
@@ -39,5 +40,7 @@ class DefaultBookService: BookService {
         return true
     }
     
-    
+    func searchBooksBy(isbn: String) async throws -> [Book] {
+        mockBooks.filter { $0.isbn.contains(isbn) }
+    }
 }

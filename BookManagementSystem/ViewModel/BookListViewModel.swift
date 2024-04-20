@@ -11,7 +11,7 @@ import Foundation
 class BookListModel: ObservableObject {
     @Published var books: [Book]
     let service: BookService
-    
+    @Published var searchText: String = ""
     
     init(
         books: [Book],
@@ -28,5 +28,18 @@ class BookListModel: ObservableObject {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    func searchByISBN() async {
+        do {
+            if searchText != "" {
+                books = try await service.searchBooksBy(isbn: searchText)
+            } else {
+                books = try await service.fetchAllBooks()
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
     }
 }

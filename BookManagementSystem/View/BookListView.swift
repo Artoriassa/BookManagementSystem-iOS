@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BookListView: View {
-    @State private var searchText = ""
     @ObservedObject
     var viewModel = BookListModel(books: [])
     
@@ -30,7 +29,12 @@ struct BookListView: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.gray)
             
-            TextField("Search", text: $searchText)
+            TextField("Search", text: $viewModel.searchText)
+                .onChange(of: viewModel.searchText, {
+                    Task {
+                        await viewModel.searchByISBN()
+                    }
+                })
                 .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
                 .foregroundColor(.black)
         }
