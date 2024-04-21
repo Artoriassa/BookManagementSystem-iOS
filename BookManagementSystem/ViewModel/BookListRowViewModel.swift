@@ -6,11 +6,16 @@
 //
 
 import Foundation
-
+enum BookListRowAlert {
+    case readNotDeveloped
+    case deleteConfirmation
+}
 @MainActor
 class BookListRowViewModel: ObservableObject {
     @Published var book: Book
     @Published var deleted: Bool = false
+    @Published var showAlert: Bool = false
+    var alertType: BookListRowAlert = .readNotDeveloped
     let service: BookService
     
     init(

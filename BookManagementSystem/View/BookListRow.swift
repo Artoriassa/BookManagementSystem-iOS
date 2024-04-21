@@ -26,8 +26,8 @@ struct BookListRow: View {
             Spacer()
             VStack(alignment: .leading) {
                 Button(action: {
-                    // Add button action
-                    // Perform the desired action here
+                    viewModel.alertType = .readNotDeveloped
+                    viewModel.showAlert = true
                 }) {
                     Image(systemName: "book.fill")
                         .font(.title)
@@ -42,10 +42,8 @@ struct BookListRow: View {
                 }
                 .padding(.leading, 4)
                 Button(action: {
-                    Task {
-                        await viewModel.deleteThisBook()
-                        await ondelete()
-                    }
+                        viewModel.alertType = .deleteConfirmation
+                        viewModel.showAlert = true
                 }) {
                     Image(systemName: "trash.slash.fill")
                         .font(.title)
@@ -57,5 +55,26 @@ struct BookListRow: View {
         .padding()
         .background(Color.gray.opacity(0.2))
         .cornerRadius(8)
+        .alert(isPresented: $viewModel.showAlert, content: {
+            alertView
+        })
+    }
+    
+    private var alertView: Alert {
+        switch viewModel.alertType {
+        case .readNotDeveloped:
+            return Alert(title: Text("read feature not developed yet"))
+        case .deleteConfirmation:
+            return Alert(
+                title: Text("Remove \(viewModel.book.title)?"),
+                message: Text("Removing from book list will mark this book not accessible"),
+                primaryButton: .destructive(Text("Delete"), action: {
+                    Task {
+                        await viewModel.deleteThisBook()
+                        await ondelete()
+                    }
+                }),
+                secondaryButton: .cancel())
+        }
     }
 }
