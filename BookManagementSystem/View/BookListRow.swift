@@ -13,6 +13,10 @@ struct BookListRow: View {
     let ondelete: () async -> Void
     var body: some View {
         HStack {
+            Image(systemName: "book.closed.fill")
+                .resizable()
+                .frame(width: 60, height: 80)
+                .foregroundColor(.primary)
             VStack(alignment: .leading) {
                 Text("Title: \(viewModel.book.title)").font(.headline)
                 Text("Author: \(viewModel.book.author)").font(.subheadline)
@@ -45,7 +49,7 @@ struct BookListRow: View {
                 }) {
                     Image(systemName: "trash.slash.fill")
                         .font(.title)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.red)
                 }
                 .padding(.leading, 4)
             }
