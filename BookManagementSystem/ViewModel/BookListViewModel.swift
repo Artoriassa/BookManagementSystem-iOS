@@ -10,8 +10,8 @@ import Foundation
 @MainActor
 class BookListModel: ObservableObject {
     @Published var books: [Book]
-    let service: BookService
     @Published var searchText: String = ""
+    private let service: BookService
     
     init(
         books: [Book],

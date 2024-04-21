@@ -16,7 +16,7 @@ class BookListRowViewModel: ObservableObject {
     @Published var deleted: Bool = false
     @Published var showAlert: Bool = false
     var alertType: BookListRowAlert = .readNotDeveloped
-    let service: BookService
+    private let service: BookService
     
     init(
         book: Book,
