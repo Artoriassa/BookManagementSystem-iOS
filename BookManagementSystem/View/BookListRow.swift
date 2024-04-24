@@ -25,40 +25,43 @@ struct BookListRow: View {
                 Text("ISBN: \(viewModel.book.isbn)").font(.subheadline)
             }
             Spacer()
-            VStack(alignment: .leading) {
-                Button(action: {
-                    viewModel.alertType = .readNotDeveloped
-                    viewModel.showAlert = true
-                }) {
-                    Image(systemName: "book.fill")
-                        .font(.title)
-                        .foregroundColor(.blue)
-                }
-                NavigationLink {
-                    EditBookView(viewModel: EditBookViewModel(book: viewModel.book))
-                } label: {
-                    Image(systemName: "pencil.circle.fill")
-                        .font(.title)
-                        .foregroundColor(.blue)
-                }
-                .padding(.leading, 4)
-                Button(action: {
-                        viewModel.alertType = .deleteConfirmation
-                        viewModel.showAlert = true
-                }) {
-                    Image(systemName: "trash.slash.fill")
-                        .font(.title)
-                        .foregroundColor(.red)
-                }
-                .padding(.leading, 4)
-            }
+            buttonMenu
         }
-        .padding()
-        .background(Color.gray.opacity(0.2))
-        .cornerRadius(8)
+        .padding(.top, 4)
+        .padding(.horizontal, 16)
         .alert(isPresented: $viewModel.showAlert, content: {
             alertView
         })
+    }
+    
+    private var buttonMenu: some View {
+        VStack(alignment: .leading) {
+            Button(action: {
+                viewModel.alertType = .readNotDeveloped
+                viewModel.showAlert = true
+            }) {
+                Image(systemName: "book.fill")
+                    .font(.title)
+                    .foregroundColor(.blue)
+            }
+            NavigationLink {
+                EditBookView(viewModel: EditBookViewModel(book: viewModel.book))
+            } label: {
+                Image(systemName: "pencil.circle.fill")
+                    .font(.title)
+                    .foregroundColor(.blue)
+            }
+            .padding(.leading, 4)
+            Button(action: {
+                viewModel.alertType = .deleteConfirmation
+                viewModel.showAlert = true
+            }) {
+                Image(systemName: "trash.slash.fill")
+                    .font(.title)
+                    .foregroundColor(.red)
+            }
+            .padding(.leading, 4)
+        }
     }
     
     private var alertView: Alert {
