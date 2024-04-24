@@ -27,15 +27,27 @@ struct BookListRow: View {
             Spacer()
             buttonMenu
         }
-        .padding(.top, 4)
+        .padding(.top, 8)
+        .padding(.bottom, 4)
         .padding(.horizontal, 16)
         .alert(isPresented: $viewModel.showAlert, content: {
             alertView
         })
+        .contextMenu(ContextMenu(menuItems: {
+            Button(action: {
+                viewModel.alertType = .deleteConfirmation
+                viewModel.showAlert = true
+            }) {
+                Text("Remove book")
+                Image(systemName: "trash.slash.fill")
+                    .font(.title)
+                    .foregroundColor(.red)
+            }
+        }))
     }
     
     private var buttonMenu: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 8) {
             Button(action: {
                 viewModel.alertType = .readNotDeveloped
                 viewModel.showAlert = true
@@ -50,15 +62,6 @@ struct BookListRow: View {
                 Image(systemName: "pencil.circle.fill")
                     .font(.title)
                     .foregroundColor(.blue)
-            }
-            .padding(.leading, 4)
-            Button(action: {
-                viewModel.alertType = .deleteConfirmation
-                viewModel.showAlert = true
-            }) {
-                Image(systemName: "trash.slash.fill")
-                    .font(.title)
-                    .foregroundColor(.red)
             }
             .padding(.leading, 4)
         }

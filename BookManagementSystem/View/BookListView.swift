@@ -68,19 +68,16 @@ struct BookListView: View {
     private var bookList: some View {
         ScrollView {
             VStack(spacing: 0) {
-                ForEach(viewModel.books) { book in
-                    VStack {
-                        BookListRow(
-                            viewModel: BookListRowViewModel(book: book),
-                            ondelete: {
-                                await viewModel.fetchAllBooks()
-                            })
-                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                            Text("swiped!!!!!")
+                    ForEach(viewModel.books) { book in
+                        VStack {
+                            BookListRow(
+                                viewModel: BookListRowViewModel(book: book),
+                                ondelete: {
+                                    await viewModel.fetchAllBooks()
+                                })
+                            Divider()
                         }
-                        Divider()
                     }
-                }
             }
         }
         .task { await viewModel.fetchAllBooks() }
