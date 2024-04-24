@@ -42,11 +42,13 @@ struct BookListView: View {
     
     private var topView: some View {
         HStack(content: {
-            Button(action: {}, label: {
+            NavigationLink {
+                DevelopingView()
+            } label: {
                 Image(systemName: "ellipsis")
                     .font(.title)
                     .foregroundColor(.blue)
-            })
+            }
             Spacer()
             Text("Book List")
                 .font(.title)
@@ -80,6 +82,7 @@ struct BookListView: View {
                     }
             }
         }
+        .scrollDismissesKeyboard(.immediately)
         .task { await viewModel.fetchAllBooks() }
     }
 }
