@@ -17,8 +17,9 @@ struct BookListRow: View {
                 .resizable()
                 .frame(width: 60, height: 80)
                 .foregroundColor(.primary)
+                .padding(.trailing, 8)
             VStack(alignment: .leading) {
-                Text("Title: \(viewModel.book.title)").font(.headline)
+                Text("Title: \(viewModel.book.title)").font(.headline).lineLimit(1)
                 Text("Author: \(viewModel.book.author)").font(.subheadline)
                 Text("Publication Year: \(viewModel.book.publicationYear)").font(.subheadline)
                 Text("ISBN: \(viewModel.book.isbn)").font(.subheadline)

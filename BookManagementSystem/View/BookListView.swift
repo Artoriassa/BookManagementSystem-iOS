@@ -14,11 +14,9 @@ struct BookListView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                HStack {
-                    searchBar
-                    addButton
-                }
-                .padding(.horizontal)
+                topView
+                searchBar
+                    .padding(.horizontal)
                 bookList
             }
         }
@@ -29,7 +27,7 @@ struct BookListView: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.gray)
             
-            TextField("Search", text: $viewModel.searchText)
+            TextField("Search ISBN", text: $viewModel.searchText)
                 .onChange(of: viewModel.searchText, {
                     Task {
                         await viewModel.searchByISBN()
@@ -45,16 +43,30 @@ struct BookListView: View {
         )
     }
     
-    private var addButton: some View {
-        NavigationLink {
-            CreateBookView(viewModel: CreateBookViewModel())
-        } label: {
-            Image(systemName: "plus.circle.fill")
+    private var topView: some View {
+        HStack(content: {
+            Button(action: {}, label: {
+                Image(systemName: "ellipsis")
+                    .font(.title)
+                    .foregroundColor(.blue)
+                    .padding(.leading, 16)
+            })
+            Spacer()
+            Text("Book List")
                 .font(.title)
-                .foregroundColor(.blue)
-        }
-        .padding(.trailing, 16)
+            Spacer()
+            NavigationLink {
+                CreateBookView(viewModel: CreateBookViewModel())
+            } label: {
+                Image(systemName: "plus.circle.fill")
+                    .font(.title)
+                    .foregroundColor(.blue)
+            }
+            .padding(.trailing, 16)
+        })
+        
     }
+    
     
     private var bookList: some View {
         ScrollView {
