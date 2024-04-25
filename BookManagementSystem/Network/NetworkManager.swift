@@ -33,37 +33,23 @@ class NetworkManager {
         }
     }
     
-    func getBookByIsbn(_ isbn: String, completion: @escaping ([Book], Error?) -> Void) {
-        guard let url = URL(string: "\(baseURL)/books/\(isbn)") else {
-            completion([], NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"]))
-            return
+    func getBooksByIsbn(isbn: String) async throws -> [Book] {
+        let url = URL(string: "\(baseURL)/books?isbn=\(isbn)")!
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+            throw NetworkError.requestFailed
         }
         
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                completion([], error)
-                return
-            }
-            
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else {
-                completion([], NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"]))
-                return
-            }
-            
-            if let data = data {
-                do {
-                    let books = try JSONDecoder().decode([Book].self, from: data)
-                    completion(books, nil)
-                } catch {
-                    completion([], error)
-                }
-            } else {
-                completion([], NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"]))
-            }
+        let decoder = JSONDecoder()
+        do {
+            let books = try decoder.decode([Book].self, from: data)
+            return books
+        } catch {
+            throw NetworkError.decodingFailed
         }
-        
-        task.resume()
     }
     
     func createBook(book: Book) async throws -> Book {

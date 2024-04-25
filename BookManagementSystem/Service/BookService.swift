@@ -59,15 +59,11 @@ class DefaultBookService: BookService {
     }
     
     func searchBooksBy(isbn: String) async throws -> [Book] {
-        //        return mockBooks.filter { $0.isbn.contains(isbn) }
-        var expectedBooks: [Book] = []
-        networkManager.getBookByIsbn(isbn) { (books, error) in
-            if let error = error {
-                print("Error retrieving book: \(error)")
-            } else if !books.isEmpty {
-                expectedBooks = books
-            }
+        do {
+            return try await networkManager.getBooksByIsbn(isbn: isbn)
+        } catch {
+            print(error.localizedDescription)
+            throw error
         }
-        return expectedBooks
     }
 }

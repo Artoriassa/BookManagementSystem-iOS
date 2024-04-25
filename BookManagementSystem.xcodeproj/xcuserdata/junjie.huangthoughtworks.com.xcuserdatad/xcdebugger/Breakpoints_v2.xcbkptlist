@@ -3,4 +3,100 @@
    uuid = "025EA0C9-3D99-4716-9DA0-7CF10DD7C585"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C93B488D-057D-463F-BA6F-29F617350B08"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookManagementSystem/Network/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "getBooksByIsbn(isbn:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "954B5D51-1EDA-461E-8906-1FEE4AE657E8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookManagementSystem/ViewModel/BookListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "searchByISBN()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "954B5D51-1EDA-461E-8906-1FEE4AE657E8 - e887b55f615aa354"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for BookManagementSystem.BookListModel.searchByISBN() async -&gt; ()"
+                  moduleName = "BookManagementSystem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junjie.huangthoughtworks.com/Desktop/projects/Mobile%20project/BookManagementSystem-iOS/BookManagementSystem/ViewModel/BookListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "277">
+               </Location>
+               <Location
+                  uuid = "954B5D51-1EDA-461E-8906-1FEE4AE657E8 - f5b5b2ffcd17732"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for BookManagementSystem.BookListModel.searchByISBN() async -&gt; ()"
+                  moduleName = "BookManagementSystem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junjie.huangthoughtworks.com/Desktop/projects/Mobile%20project/BookManagementSystem-iOS/BookManagementSystem/ViewModel/BookListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "954B5D51-1EDA-461E-8906-1FEE4AE657E8 - ba3e34ae1e58e716"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for BookManagementSystem.BookListModel.searchByISBN() async -&gt; ()"
+                  moduleName = "BookManagementSystem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junjie.huangthoughtworks.com/Desktop/projects/Mobile%20project/BookManagementSystem-iOS/BookManagementSystem/ViewModel/BookListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "39">
+               </Location>
+               <Location
+                  uuid = "954B5D51-1EDA-461E-8906-1FEE4AE657E8 - f41af3f3efdd0abb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for BookManagementSystem.BookListModel.searchByISBN() async -&gt; ()"
+                  moduleName = "BookManagementSystem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/junjie.huangthoughtworks.com/Desktop/projects/Mobile%20project/BookManagementSystem-iOS/BookManagementSystem/ViewModel/BookListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
