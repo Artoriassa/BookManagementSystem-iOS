@@ -13,7 +13,7 @@ class CreateBookViewModel: ObservableObject {
     private let service: BookService
     
     init(
-        book: Book = .init(id: UUID().uuidString, title: "", author: "", publicationYear: "", isbn: ""),
+        book: Book = .init(title: "", author: "", publicationYear: "", isbn: ""),
         service: BookService = DefaultBookService()
     ) {
         self.book = book

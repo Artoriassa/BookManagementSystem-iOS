@@ -28,7 +28,7 @@ class BookListRowViewModel: ObservableObject {
     
     func deleteThisBook() async {
         do {
-            deleted = try await service.deleteBookBy(id: book.id)
+            deleted = try await service.deleteBookBy(id: book.id!)
         } catch let error {
             print(error.localizedDescription)
             deleted = false
