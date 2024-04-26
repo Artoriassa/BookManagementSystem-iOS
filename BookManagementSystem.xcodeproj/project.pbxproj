@@ -33,6 +33,7 @@
 		6308CDA32BD3D74000B08643 /* CreateBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6308CDA22BD3D74000B08643 /* CreateBookView.swift */; };
 		6308CDAB2BD8C93700B08643 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6308CDAA2BD8C93700B08643 /* NetworkManager.swift */; };
 		63AF57AB2BD8FE500029082C /* DevelopingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF57AA2BD8FE500029082C /* DevelopingView.swift */; };
+		63EFFC182BDB3EB000833EAD /* DevelopingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EFFC172BDB3EB000833EAD /* DevelopingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		6308CDA22BD3D74000B08643 /* CreateBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookView.swift; sourceTree = "<group>"; };
 		6308CDAA2BD8C93700B08643 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		63AF57AA2BD8FE500029082C /* DevelopingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopingView.swift; sourceTree = "<group>"; };
+		63EFFC172BDB3EB000833EAD /* DevelopingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				6308CD8D2BD3A98F00B08643 /* BookListRowViewModel.swift */,
 				6308CD972BD3CB0A00B08643 /* EditBookViewModel.swift */,
 				6308CDA02BD3D71500B08643 /* CreateBookViewModel.swift */,
+				63EFFC172BDB3EB000833EAD /* DevelopingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				6308CD832BD2937D00B08643 /* BookListView.swift in Sources */,
 				6308CD512BD26D7100B08643 /* ContentView.swift in Sources */,
 				6308CD7C2BD27B5200B08643 /* MainView.swift in Sources */,
+				63EFFC182BDB3EB000833EAD /* DevelopingViewModel.swift in Sources */,
 				6308CD982BD3CB0A00B08643 /* EditBookViewModel.swift in Sources */,
 				6308CD802BD2901E00B08643 /* Book.swift in Sources */,
 				6308CD852BD3A2C400B08643 /* BookListViewModel.swift in Sources */,

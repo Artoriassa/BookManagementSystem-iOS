@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct DevelopingView: View {
+    @ObservedObject
+    var viewModel = DevelopingViewModel()
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("This is just a demo, there are fundamental creating, updating, deleting(long pressing a book), searching features in this APP")
-            Spacer()
         }
+        Button(action: {
+            Task {
+                await viewModel.addSampleBooks()
+            }
+        }, label: {
+            Text("add sample books")
+        })
+        Spacer()
         .padding(.horizontal, 16)
         .navigationTitle("Developing Page")
     }
